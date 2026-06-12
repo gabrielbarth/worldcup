@@ -1,6 +1,6 @@
 import {
   collection, doc, getDocs, getDoc,
-  updateDoc, writeBatch, query, where, Timestamp
+  writeBatch, query, where, Timestamp
 } from 'firebase/firestore'
 import { db } from './firebase'
 import type { Match, Team, MatchResult, Prediction } from '../types'
@@ -16,13 +16,22 @@ export async function getTeams(): Promise<Team[]> {
   return snap.docs.map(d => ({ id: d.id, ...d.data() } as Team))
 }
 
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = []
+  for (let i = 0; i < arr.length; i += size) result.push(arr.slice(i, i + size))
+  return result
+}
+
+type WriteOp = { ref: import('firebase/firestore').DocumentReference; data: Record<string, unknown> }
+
 export async function submitResult(matchId: string, result: MatchResult): Promise<void> {
-  const batch = writeBatch(db)
+  // Collect all write operations first, then commit in chunks of 499
+  const writes: WriteOp[] = []
 
   // 1. Update match status and result
-  batch.update(doc(db, 'matches', matchId), {
-    status: 'finished',
-    result,
+  writes.push({
+    ref: doc(db, 'matches', matchId),
+    data: { status: 'finished', result },
   })
 
   // 2. Score all predictions for this match
@@ -32,7 +41,7 @@ export async function submitResult(matchId: string, result: MatchResult): Promis
   for (const predDoc of predsSnap.docs) {
     const prediction = predDoc.data() as Prediction
     const points = calculatePoints(prediction, result)
-    batch.update(predDoc.ref, { points, scoredAt: Timestamp.now() })
+    writes.push({ ref: predDoc.ref, data: { points, scoredAt: Timestamp.now() } })
   }
 
   // 3. Advance bracket: update matches that depend on this result
@@ -50,8 +59,14 @@ export async function submitResult(matchId: string, result: MatchResult): Promis
     if (next.awayTeamSource === `W${matchId}`) updates.awayTeamId = actualWinnerId
     if (next.homeTeamSource === `L${matchId}`) updates.homeTeamId = actualLoserId
     if (next.awayTeamSource === `L${matchId}`) updates.awayTeamId = actualLoserId
-    if (Object.keys(updates).length > 0) batch.update(nextDoc.ref, updates)
+    if (Object.keys(updates).length > 0) writes.push({ ref: nextDoc.ref, data: updates })
   }
 
-  await batch.commit()
+  // Commit in batches of 499 (Firestore limit is 500 ops per batch)
+  for (const chunk of chunkArray(writes, 499)) {
+    const batch = writeBatch(db)
+    chunk.forEach(op => batch.update(op.ref, op.data))
+    await batch.commit()
+  }
+
 }

@@ -15,7 +15,7 @@ export function AdminMatchForm({ match, teamMap }: Props) {
   const [penHome, setPenHome] = useState('')
   const [penAway, setPenAway] = useState('')
   const [saving, setSaving] = useState(false)
-  const [done, setDone] = useState(match.status === 'finished')
+  const done = match.status === 'finished'
 
   const home = match.homeTeamId ? teamMap[match.homeTeamId] : null
   const away = match.awayTeamId ? teamMap[match.awayTeamId] : null
@@ -40,7 +40,6 @@ export function AdminMatchForm({ match, teamMap }: Props) {
       })
       await qc.invalidateQueries({ queryKey: ['matches'] })
       await qc.invalidateQueries({ queryKey: ['predictions'] })
-      setDone(true)
     } finally {
       setSaving(false)
     }

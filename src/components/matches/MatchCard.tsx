@@ -17,6 +17,8 @@ export function MatchCard({ match, teamMap, prediction }: Props) {
   const away = match.awayTeamId ? teamMap[match.awayTeamId] : null
   const isPast = match.matchDate.toDate() < new Date()
   const isFinished = match.status === 'finished'
+  const homeScore = prediction?.homeScore
+  const awayScore = prediction?.awayScore
 
   const homeLabel = home ? `${home.flagEmoji} ${home.name}` : match.homeTeamSource ?? '?'
   const awayLabel = away ? `${away.flagEmoji} ${away.name}` : match.awayTeamSource ?? '?'
@@ -38,12 +40,14 @@ export function MatchCard({ match, teamMap, prediction }: Props) {
           </div>
         ) : (
           <PredictionInput
-            homeScore={prediction?.homeScore}
-            awayScore={prediction?.awayScore}
+            homeScore={homeScore}
+            awayScore={awayScore}
             disabled={isPast || !appUser}
             isSaving={isPending}
-            onSave={(h, a) =>
-              appUser && save({ userId: appUser.uid, matchId: match.id, homeScore: h, awayScore: a })
+            showPenaltySelector={match.stage !== 'group' && homeScore !== undefined && awayScore !== undefined && homeScore === awayScore}
+            penaltyWinner={prediction?.penaltyWinner}
+            onSave={(h, a, penaltyWinner) =>
+              appUser && save({ userId: appUser.uid, matchId: match.id, homeScore: h, awayScore: a, penaltyWinner: penaltyWinner ?? null })
             }
           />
         )}

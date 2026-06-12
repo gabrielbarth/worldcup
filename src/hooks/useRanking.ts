@@ -4,12 +4,26 @@ import { db } from '../services/firebase'
 import { getAllUsers, getUsersByIds } from '../services/userService'
 import type { RankingEntry, Prediction, BolaoGroup } from '../types'
 
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = []
+  for (let i = 0; i < arr.length; i += size) result.push(arr.slice(i, i + size))
+  return result
+}
+
 async function computeRanking(userIds: string[]): Promise<RankingEntry[]> {
   if (userIds.length === 0) return []
-  const [users, predsSnap] = await Promise.all([
+
+  // Firestore 'in' queries are limited to 30 values; chunk to avoid the limit
+  const chunks = chunkArray(userIds, 30)
+  const [users, predChunks] = await Promise.all([
     getUsersByIds(userIds),
-    getDocs(query(collection(db, 'predictions'), where('userId', 'in', userIds))),
+    Promise.all(
+      chunks.map(chunk =>
+        getDocs(query(collection(db, 'predictions'), where('userId', 'in', chunk)))
+      )
+    ),
   ])
+  const predsSnap = { docs: predChunks.flatMap(snap => snap.docs) }
 
   const predictions = predsSnap.docs.map(d => d.data() as Prediction)
   const pointsMap: Record<string, { total: number; exact: number }> = {}

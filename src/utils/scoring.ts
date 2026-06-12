@@ -21,7 +21,7 @@ export function calculatePoints(prediction: Prediction, result: MatchResult): nu
     }
   }
 
-  if (result.penalties) {
+  if (result.penalties && predOutcome === 0) {
     const actualWinner = result.penalties.home > result.penalties.away ? 'home' : 'away'
     if (prediction.penaltyWinner === actualWinner) {
       points += 1
