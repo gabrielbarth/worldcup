@@ -1,3 +1,10 @@
+# Superpowers brainstorming artifacts
+.superpowers/
+
+# Environment files
+.env.local
+.env*.local
+
 # Logs
 logs
 *.log
