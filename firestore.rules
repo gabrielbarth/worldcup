@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isOwner(uid) {
+      return isAuth() && request.auth.uid == uid;
+    }
+
+    // Users: public read, self-write (no role change)
+    match /users/{uid} {
+      allow read: if true;
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid) &&
+        (!request.resource.data.keys().hasAny(['role']) ||
+         request.resource.data.role == resource.data.role);
+    }
+
+    // Teams: public read, admin write
+    match /teams/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Matches: public read, admin write
+    match /matches/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Groups: member read, auth create, member update members, owner update rest
+    match /groups/{id} {
+      allow read: if isAuth() && request.auth.uid in resource.data.members;
+      allow create: if isAuth();
+      allow update: if isAuth() && (
+        (request.auth.uid in resource.data.members &&
+         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['members'])) ||
+        request.auth.uid == resource.data.ownerId
+      );
+    }
+
+    // Predictions: owner read/write (score fields admin-only)
+    match /predictions/{id} {
+      allow read: if isAuth() && request.auth.uid == resource.data.userId;
+      allow create: if isAuth() &&
+        request.auth.uid == request.resource.data.userId &&
+        !request.resource.data.keys().hasAny(['points', 'scoredAt']) &&
+        request.resource.data.matchId != null &&
+        get(/databases/$(database)/documents/matches/$(request.resource.data.matchId)).data.status == 'scheduled';
+      allow update: if (
+        (isAuth() && request.auth.uid == resource.data.userId &&
+         !request.resource.data.keys().hasAny(['points', 'scoredAt']) &&
+         get(/databases/$(database)/documents/matches/$(resource.data.matchId)).data.status == 'scheduled') ||
+        isAdmin()
+      );
+    }
+  }
+}
