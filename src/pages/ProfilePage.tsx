@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,7 +11,6 @@ export function ProfilePage() {
   const { appUser } = useAuthState()
   const { mutate: logout } = useLogout()
   const { mutate: update, isPending } = useUpdateProfile()
-  const fileRef = useRef<HTMLInputElement>(null)
 
   const { register, handleSubmit, formState: { errors } } = useForm<Form>({
     resolver: zodResolver(schema),
@@ -22,28 +20,15 @@ export function ProfilePage() {
   const onSubmit = (data: Form) =>
     appUser && update({ uid: appUser.uid, data: { name: data.name } })
 
-  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file && appUser) update({ uid: appUser.uid, data: { photoFile: file } })
-  }
-
   if (!appUser) return null
 
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold text-white mb-6">Perfil</h1>
       <div className="flex flex-col items-center mb-6">
-        <button onClick={() => fileRef.current?.click()} className="relative">
-          {appUser.photoURL ? (
-            <img src={appUser.photoURL} alt="" className="w-20 h-20 rounded-full object-cover" />
-          ) : (
-            <div className="w-20 h-20 rounded-full bg-navy-700 flex items-center justify-center text-3xl text-gray-400">
-              {appUser.name[0].toUpperCase()}
-            </div>
-          )}
-          <div className="absolute bottom-0 right-0 bg-brand rounded-full w-6 h-6 flex items-center justify-center text-xs text-white">✎</div>
-        </button>
-        <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={onFileChange} />
+        <div className="w-20 h-20 rounded-full bg-navy-700 flex items-center justify-center text-3xl text-gray-400">
+          {appUser.name[0].toUpperCase()}
+        </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mb-6">
         <div>

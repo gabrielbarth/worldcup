@@ -48,7 +48,7 @@ export function useLogout() {
 export function useUpdateProfile() {
   const qc = useQueryClient()
   return useMutation({
-    mutationFn: ({ uid, data }: { uid: string; data: { name?: string; photoFile?: File } }) =>
+    mutationFn: ({ uid, data }: { uid: string; data: { name?: string } }) =>
       updateUserProfile(uid, data),
     onSuccess: (_, { uid }) => qc.invalidateQueries({ queryKey: ['user', uid] }),
   })

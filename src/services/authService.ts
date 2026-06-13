@@ -5,8 +5,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore'
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { auth, db, storage } from './firebase'
+import { auth, db } from './firebase'
 import type { AppUser } from '../types'
 
 export async function register(name: string, email: string, password: string): Promise<void> {
@@ -36,20 +35,10 @@ export async function getAppUser(uid: string): Promise<AppUser | null> {
 
 export async function updateUserProfile(
   uid: string,
-  data: { name?: string; photoFile?: File }
+  data: { name?: string }
 ): Promise<void> {
-  const updates: Partial<AppUser> = {}
-
-  if (data.photoFile) {
-    const storageRef = ref(storage, `avatars/${uid}`)
-    await uploadBytes(storageRef, data.photoFile)
-    updates.photoURL = await getDownloadURL(storageRef)
-  }
-
   if (data.name) {
-    updates.name = data.name
     await updateProfile(auth.currentUser!, { displayName: data.name })
+    await updateDoc(doc(db, 'users', uid), { name: data.name })
   }
-
-  await updateDoc(doc(db, 'users', uid), updates)
 }
