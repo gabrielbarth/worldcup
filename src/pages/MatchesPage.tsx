@@ -24,13 +24,14 @@ export function MatchesPage() {
   const { appUser } = useAuthState()
   const predMap = usePredictionMap(appUser?.uid)
 
-  const [activeTab, setActiveTab] = useState<string>('A')
+  const [activeTab, setActiveTab] = useState<string>('todos')
 
   const tabClass = (tab: string) =>
     `px-4 py-2 text-sm whitespace-nowrap ${activeTab === tab ? 'text-brand border-b-2 border-brand' : 'text-gray-400'}`
 
-  const visibleMatches =
-    KNOCKOUT_STAGES.includes(activeTab as MatchStage)
+  const visibleMatches = activeTab === 'todos'
+    ? [...matches].sort((a, b) => a.matchDate.toMillis() - b.matchDate.toMillis())
+    : KNOCKOUT_STAGES.includes(activeTab as MatchStage)
       ? matches.filter(m => m.stage === activeTab)
       : matches.filter(m => m.stage === 'group' && m.groupName === activeTab)
 
@@ -40,6 +41,7 @@ export function MatchesPage() {
     <div className="min-h-screen bg-navy-900">
       <div className="sticky top-0 bg-navy-900 border-b border-navy-700 z-10">
         <div className="flex overflow-x-auto scrollbar-hide">
+          <button className={tabClass('todos')} onClick={() => setActiveTab('todos')}>Todos</button>
           {GROUP_NAMES.map(g => (
             <button key={g} className={tabClass(g)} onClick={() => setActiveTab(g)}>Grupo {g}</button>
           ))}
