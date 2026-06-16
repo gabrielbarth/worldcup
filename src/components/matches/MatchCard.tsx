@@ -53,11 +53,15 @@ export function MatchCard({ match, teamMap, prediction }: Props) {
         )}
         <span className="text-sm font-medium flex-1">{awayLabel}</span>
       </div>
-      {isFinished && prediction?.points !== undefined && (
-        <div className="text-right mt-1 text-xs text-brand font-semibold">
-          +{prediction.points} pts
-        </div>
-      )}
+      <div className="mt-2 text-xs text-right">
+        {isFinished && prediction?.points !== undefined ? (
+          <span className="text-brand font-semibold">+{prediction.points} pts</span>
+        ) : !isFinished && prediction?.homeScore !== undefined && prediction?.awayScore !== undefined ? (
+          <span className="text-gray-500">
+            Palpite salvo: {prediction.homeScore} × {prediction.awayScore}
+          </span>
+        ) : null}
+      </div>
     </div>
   )
 }
