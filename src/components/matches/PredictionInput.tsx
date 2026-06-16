@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface Props {
   homeScore: number | undefined
@@ -24,6 +24,8 @@ export function PredictionInput({
   const [penaltyWinner, setPenaltyWinner] = useState<'home' | 'away' | undefined>(
     initialPenaltyWinner ?? undefined
   )
+  const [saved, setSaved] = useState(false)
+  const wasSaving = useRef(false)
 
   useEffect(() => {
     setHome(homeScore?.toString() ?? '')
@@ -33,6 +35,17 @@ export function PredictionInput({
   useEffect(() => {
     setPenaltyWinner(initialPenaltyWinner ?? undefined)
   }, [initialPenaltyWinner])
+
+  useEffect(() => {
+    if (isSaving) {
+      wasSaving.current = true
+    } else if (wasSaving.current) {
+      wasSaving.current = false
+      setSaved(true)
+      const t = setTimeout(() => setSaved(false), 1500)
+      return () => clearTimeout(t)
+    }
+  }, [isSaving])
 
   const handleSave = () => {
     const h = parseInt(home)
@@ -72,10 +85,14 @@ export function PredictionInput({
         {!disabled && (
           <button
             onClick={handleSave}
-            disabled={isSaving || home === '' || away === ''}
-            className="ml-1 px-3 py-2 bg-brand text-white text-xs rounded-lg disabled:opacity-40"
+            disabled={isSaving || saved || home === '' || away === ''}
+            className={`ml-1 px-3 py-2 text-xs rounded-lg transition-colors ${
+              saved
+                ? 'bg-green-600 text-white'
+                : 'bg-brand text-white disabled:opacity-40'
+            }`}
           >
-            {isSaving ? '...' : 'OK'}
+            {isSaving ? '...' : saved ? '✓' : 'OK'}
           </button>
         )}
       </div>
