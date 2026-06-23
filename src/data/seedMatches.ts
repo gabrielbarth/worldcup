@@ -118,16 +118,15 @@ export const SEED_MATCHES: SeedMatch[] = [
     d('2026-06-26T20:00:00-04:00'), // CPV vs KSA  — simultaneous MD3 (confirmed)
   ]),
 
-  // GROUP I (FRA, IRQ, SEN, NOR)
-  // ⚠️ Ordem: FRA vs IRQ é MD1 (Jun 15, confirmado pelo usuário)
-  // MD1: Jun 15 + 16 | MD2: ~Jun 20 | MD3: Jun 26 15h ET (confirmed)
-  ...groupMatches('I', ['FRA', 'IRQ', 'SEN', 'NOR'], [
-    d('2026-06-15T15:00:00-04:00'), // FRA vs IRQ  — confirmado pelo usuário (Jun 15)
-    d('2026-06-16T15:00:00-04:00'), // SEN vs NOR  — estimado Jun 16
-    d('2026-06-20T20:00:00-04:00'), // FRA vs SEN  — estimado Jun 20
-    d('2026-06-20T23:00:00-04:00'), // IRQ vs NOR  — estimado Jun 20
+  // GROUP I (FRA, SEN, IRQ, NOR)
+  // MD1: Jun 16 (FRA vs SEN + NOR vs IRQ) | MD2: Jun 22 (FRA vs IRQ confirmado!) | MD3: Jun 26 15h ET (confirmed)
+  ...groupMatches('I', ['FRA', 'SEN', 'IRQ', 'NOR'], [
+    d('2026-06-16T15:00:00-04:00'), // FRA vs SEN  — MD1 Jun 16
+    d('2026-06-16T20:00:00-04:00'), // IRQ vs NOR  — MD1 Jun 16
+    d('2026-06-22T17:00:00-04:00'), // FRA vs IRQ  — MD2 Jun 22 5PM ET (confirmado pelo usuário!)
+    d('2026-06-22T20:00:00-04:00'), // SEN vs NOR  — MD2 Jun 22 8PM ET
     d('2026-06-26T15:00:00-04:00'), // FRA vs NOR  — simultaneous MD3 (confirmed)
-    d('2026-06-26T15:00:00-04:00'), // IRQ vs SEN  — simultaneous MD3 (confirmed)
+    d('2026-06-26T15:00:00-04:00'), // SEN vs IRQ  — simultaneous MD3 (confirmed)
   ]),
 
   // GROUP J (ARG, ALG, AUT, JOR)
