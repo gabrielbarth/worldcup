@@ -75,11 +75,12 @@ async function main() {
   }
 
   // Rank best-8 third-placed teams across all groups
-  const thirds = Object.entries(standingsByGroup)
+  const allThirds = Object.entries(standingsByGroup)
     .map(([group, standings]) => ({ group, ...standings[2] }))
     .filter(t => t.teamId)
     .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf)
-    .slice(0, 8)
+  console.log('All 12 third-placed teams ranked:', allThirds)
+  const thirds = allThirds.slice(0, 8)
 
   thirds.forEach((t, i) => { sourceMap[`3best${i + 1}`] = t.teamId })
 

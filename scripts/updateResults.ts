@@ -25,7 +25,7 @@ const RESULTS: ResultInput[] = [
   { id: 'gB1', homeScore: 1, awayScore: 1 }, // CAN vs BIH
   { id: 'gB2', homeScore: 1, awayScore: 1 }, // QAT vs SUI
   { id: 'gB3', homeScore: 6, awayScore: 0 }, // CAN vs QAT
-  { id: 'gB4', homeScore: 4, awayScore: 1 }, // BIH vs SUI
+  { id: 'gB4', homeScore: 1, awayScore: 4 }, // BIH vs SUI (real: Switzerland 4-1 Bosnia, BIH is home)
 
   // Group C
   { id: 'gC1', homeScore: 1, awayScore: 1 }, // BRA vs MAR
@@ -106,7 +106,7 @@ const RESULTS: ResultInput[] = [
   { id: 'gJ6', homeScore: 3, awayScore: 3 }, // ALG vs AUT
   { id: 'gK4', homeScore: 0, awayScore: 1 }, // COD vs COL
   { id: 'gK5', homeScore: 0, awayScore: 0 }, // POR vs COL
-  { id: 'gK6', homeScore: 1, awayScore: 3 }, // UZB vs COD
+  { id: 'gK6', homeScore: 3, awayScore: 1 }, // COD vs UZB (real: Uzbekistan 1-3 DR Congo, COD is home)
   { id: 'gL5', homeScore: 2, awayScore: 0 }, // ENG vs PAN
   { id: 'gL6', homeScore: 2, awayScore: 1 }, // CRO vs GHA
 ]

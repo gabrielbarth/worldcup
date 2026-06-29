@@ -162,23 +162,23 @@ export const SEED_MATCHES: SeedMatch[] = [
     d('2026-06-27T17:00:00-04:00'), // CRO vs GHA  — simultaneous MD3 (confirmed)
   ]),
 
-  // ROUND OF 32 (16 matches)
-  { id: 'r32_1',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1A', awayTeamSource: '2C', matchDate: d('2026-07-04T12:00:00-04:00') },
-  { id: 'r32_2',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1B', awayTeamSource: '2D', matchDate: d('2026-07-04T16:00:00-04:00') },
-  { id: 'r32_3',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1C', awayTeamSource: '2A', matchDate: d('2026-07-05T12:00:00-04:00') },
-  { id: 'r32_4',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1D', awayTeamSource: '2B', matchDate: d('2026-07-05T16:00:00-04:00') },
-  { id: 'r32_5',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1E', awayTeamSource: '2G', matchDate: d('2026-07-06T12:00:00-04:00') },
-  { id: 'r32_6',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1F', awayTeamSource: '2H', matchDate: d('2026-07-06T16:00:00-04:00') },
-  { id: 'r32_7',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1G', awayTeamSource: '2E', matchDate: d('2026-07-07T12:00:00-04:00') },
-  { id: 'r32_8',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1H', awayTeamSource: '2F', matchDate: d('2026-07-07T16:00:00-04:00') },
-  { id: 'r32_9',  stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1I', awayTeamSource: '2K', matchDate: d('2026-07-08T12:00:00-04:00') },
-  { id: 'r32_10', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1J', awayTeamSource: '2L', matchDate: d('2026-07-08T16:00:00-04:00') },
-  { id: 'r32_11', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1K', awayTeamSource: '2I', matchDate: d('2026-07-09T12:00:00-04:00') },
-  { id: 'r32_12', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '1L', awayTeamSource: '2J', matchDate: d('2026-07-09T16:00:00-04:00') },
-  { id: 'r32_13', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '3best1', awayTeamSource: '3best2', matchDate: d('2026-07-10T12:00:00-04:00') },
-  { id: 'r32_14', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '3best3', awayTeamSource: '3best4', matchDate: d('2026-07-10T16:00:00-04:00') },
-  { id: 'r32_15', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '3best5', awayTeamSource: '3best6', matchDate: d('2026-07-11T12:00:00-04:00') },
-  { id: 'r32_16', stage: 'round32', homeTeamId: null, awayTeamId: null, homeTeamSource: '3best7', awayTeamSource: '3best8', matchDate: d('2026-07-11T16:00:00-04:00') },
+  // ROUND OF 32 (16 matches) — real confirmed bracket, group stage finished Jun 27
+  { id: 'r32_1',  stage: 'round32', homeTeamId: 'RSA', awayTeamId: 'CAN', matchDate: d('2026-06-28T15:00:00-04:00') }, // South Africa vs Canada
+  { id: 'r32_2',  stage: 'round32', homeTeamId: 'BRA', awayTeamId: 'JPN', matchDate: d('2026-06-29T13:00:00-04:00') }, // Brazil vs Japan
+  { id: 'r32_3',  stage: 'round32', homeTeamId: 'GER', awayTeamId: 'PAR', matchDate: d('2026-06-29T16:30:00-04:00') }, // Germany vs Paraguay
+  { id: 'r32_4',  stage: 'round32', homeTeamId: 'NED', awayTeamId: 'MAR', matchDate: d('2026-06-29T21:00:00-04:00') }, // Netherlands vs Morocco
+  { id: 'r32_5',  stage: 'round32', homeTeamId: 'CIV', awayTeamId: 'NOR', matchDate: d('2026-06-30T13:00:00-04:00') }, // Ivory Coast vs Norway
+  { id: 'r32_6',  stage: 'round32', homeTeamId: 'MEX', awayTeamId: 'ECU', matchDate: d('2026-06-30T21:00:00-04:00') }, // Mexico vs Ecuador
+  { id: 'r32_7',  stage: 'round32', homeTeamId: 'FRA', awayTeamId: 'SWE', matchDate: d('2026-07-01T15:00:00-04:00') }, // France vs Sweden
+  { id: 'r32_8',  stage: 'round32', homeTeamId: 'ENG', awayTeamId: 'COD', matchDate: d('2026-07-01T12:00:00-04:00') }, // England vs DR Congo
+  { id: 'r32_9',  stage: 'round32', homeTeamId: 'BEL', awayTeamId: 'SEN', matchDate: d('2026-07-01T16:00:00-04:00') }, // Belgium vs Senegal
+  { id: 'r32_10', stage: 'round32', homeTeamId: 'USA', awayTeamId: 'BIH', matchDate: d('2026-07-01T20:00:00-04:00') }, // USA vs Bosnia & Herzegovina
+  { id: 'r32_11', stage: 'round32', homeTeamId: 'ESP', awayTeamId: 'AUT', matchDate: d('2026-07-02T15:00:00-04:00') }, // Spain vs Austria
+  { id: 'r32_12', stage: 'round32', homeTeamId: 'POR', awayTeamId: 'CRO', matchDate: d('2026-07-02T19:00:00-04:00') }, // Portugal vs Croatia
+  { id: 'r32_13', stage: 'round32', homeTeamId: 'SUI', awayTeamId: 'ALG', matchDate: d('2026-07-02T23:00:00-04:00') }, // Switzerland vs Algeria
+  { id: 'r32_14', stage: 'round32', homeTeamId: 'AUS', awayTeamId: 'EGY', matchDate: d('2026-07-03T14:00:00-04:00') }, // Australia vs Egypt
+  { id: 'r32_15', stage: 'round32', homeTeamId: 'ARG', awayTeamId: 'CPV', matchDate: d('2026-07-03T18:00:00-04:00') }, // Argentina vs Cape Verde
+  { id: 'r32_16', stage: 'round32', homeTeamId: 'COL', awayTeamId: 'GHA', matchDate: d('2026-07-03T21:30:00-04:00') }, // Colombia vs Ghana
 
   // ROUND OF 16 (8 matches)
   { id: 'r16_1', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_1',  awayTeamSource: 'Wr32_2',  matchDate: d('2026-07-14T12:00:00-04:00') },
