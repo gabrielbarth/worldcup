@@ -82,6 +82,33 @@ const RESULTS: ResultInput[] = [
   // Group L
   { id: 'gL1', homeScore: 4, awayScore: 2 }, // ENG vs CRO
   { id: 'gL2', homeScore: 1, awayScore: 0 }, // GHA vs PAN
+
+  // ---- MD3 results (group stage now complete as of Jun 29) ----
+  { id: 'gA5', homeScore: 3, awayScore: 0 }, // MEX vs CZE
+  { id: 'gA6', homeScore: 1, awayScore: 0 }, // RSA vs KOR (RSA 1-0 KOR, real result: South Africa 1-0 South Korea)
+  { id: 'gB5', homeScore: 1, awayScore: 2 }, // CAN vs SUI
+  { id: 'gB6', homeScore: 3, awayScore: 1 }, // BIH vs QAT
+  { id: 'gC5', homeScore: 3, awayScore: 0 }, // BRA vs SCO
+  { id: 'gC6', homeScore: 4, awayScore: 2 }, // MAR vs HAI
+  { id: 'gD5', homeScore: 2, awayScore: 3 }, // USA vs TUR
+  { id: 'gD6', homeScore: 0, awayScore: 0 }, // PAR vs AUS
+  { id: 'gE5', homeScore: 1, awayScore: 2 }, // GER vs ECU
+  { id: 'gE6', homeScore: 0, awayScore: 2 }, // CUW vs CIV
+  { id: 'gF5', homeScore: 3, awayScore: 1 }, // NED vs TUN
+  { id: 'gF6', homeScore: 1, awayScore: 1 }, // JPN vs SWE
+  { id: 'gG5', homeScore: 5, awayScore: 1 }, // BEL vs NZL
+  { id: 'gG6', homeScore: 1, awayScore: 1 }, // EGY vs IRN
+  { id: 'gH5', homeScore: 1, awayScore: 0 }, // ESP vs URU
+  { id: 'gH6', homeScore: 0, awayScore: 0 }, // CPV vs KSA
+  { id: 'gI5', homeScore: 4, awayScore: 1 }, // FRA vs NOR
+  { id: 'gI6', homeScore: 5, awayScore: 0 }, // SEN vs IRQ
+  { id: 'gJ5', homeScore: 3, awayScore: 1 }, // ARG vs JOR
+  { id: 'gJ6', homeScore: 3, awayScore: 3 }, // ALG vs AUT
+  { id: 'gK4', homeScore: 0, awayScore: 1 }, // COD vs COL
+  { id: 'gK5', homeScore: 0, awayScore: 0 }, // POR vs COL
+  { id: 'gK6', homeScore: 1, awayScore: 3 }, // UZB vs COD
+  { id: 'gL5', homeScore: 2, awayScore: 0 }, // ENG vs PAN
+  { id: 'gL6', homeScore: 2, awayScore: 1 }, // CRO vs GHA
 ]
 
 function calculatePoints(
