@@ -180,29 +180,30 @@ export const SEED_MATCHES: SeedMatch[] = [
   { id: 'r32_15', stage: 'round32', homeTeamId: 'ARG', awayTeamId: 'CPV', matchDate: d('2026-07-03T18:00:00-04:00') }, // Argentina vs Cape Verde
   { id: 'r32_16', stage: 'round32', homeTeamId: 'COL', awayTeamId: 'GHA', matchDate: d('2026-07-03T21:30:00-04:00') }, // Colombia vs Ghana
 
-  // ROUND OF 16 (8 matches)
-  { id: 'r16_1', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_1',  awayTeamSource: 'Wr32_2',  matchDate: d('2026-07-14T12:00:00-04:00') },
-  { id: 'r16_2', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_3',  awayTeamSource: 'Wr32_4',  matchDate: d('2026-07-14T16:00:00-04:00') },
-  { id: 'r16_3', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_5',  awayTeamSource: 'Wr32_6',  matchDate: d('2026-07-15T12:00:00-04:00') },
-  { id: 'r16_4', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_7',  awayTeamSource: 'Wr32_8',  matchDate: d('2026-07-15T16:00:00-04:00') },
-  { id: 'r16_5', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_9',  awayTeamSource: 'Wr32_10', matchDate: d('2026-07-16T12:00:00-04:00') },
-  { id: 'r16_6', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_11', awayTeamSource: 'Wr32_12', matchDate: d('2026-07-16T16:00:00-04:00') },
-  { id: 'r16_7', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_13', awayTeamSource: 'Wr32_14', matchDate: d('2026-07-17T12:00:00-04:00') },
-  { id: 'r16_8', stage: 'round16', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr32_15', awayTeamSource: 'Wr32_16', matchDate: d('2026-07-17T16:00:00-04:00') },
+  // ROUND OF 16 (8 matches) — real confirmed bracket (Jul 4-7)
+  // Real pairings differ from sequential r32 order; teams hardcoded via fixR16Bracket.ts script
+  { id: 'r16_1', stage: 'round16', homeTeamId: 'MAR', awayTeamId: 'CAN', homeTeamSource: 'Wr32_4',  awayTeamSource: 'Wr32_1',  matchDate: d('2026-07-04T13:00:00-04:00') }, // Morocco vs Canada (Houston)
+  { id: 'r16_2', stage: 'round16', homeTeamId: 'FRA', awayTeamId: 'PAR', homeTeamSource: 'Wr32_7',  awayTeamSource: 'Wr32_3',  matchDate: d('2026-07-04T17:00:00-04:00') }, // France vs Paraguay (Philadelphia)
+  { id: 'r16_3', stage: 'round16', homeTeamId: 'BRA', awayTeamId: 'NOR', homeTeamSource: 'Wr32_2',  awayTeamSource: 'Wr32_5',  matchDate: d('2026-07-05T16:00:00-04:00') }, // Brazil vs Norway (MetLife)
+  { id: 'r16_4', stage: 'round16', homeTeamId: 'MEX', awayTeamId: 'ENG', homeTeamSource: 'Wr32_6',  awayTeamSource: 'Wr32_8',  matchDate: d('2026-07-05T20:00:00-04:00') }, // Mexico vs England (Azteca)
+  { id: 'r16_5', stage: 'round16', homeTeamId: 'POR', awayTeamId: 'ESP', homeTeamSource: 'Wr32_12', awayTeamSource: 'Wr32_11', matchDate: d('2026-07-06T15:00:00-04:00') }, // Portugal vs Spain (Arlington/Dallas)
+  { id: 'r16_6', stage: 'round16', homeTeamId: 'USA', awayTeamId: 'BEL', homeTeamSource: 'Wr32_10', awayTeamSource: 'Wr32_9',  matchDate: d('2026-07-06T17:00:00-04:00') }, // USA vs Belgium (Seattle)
+  { id: 'r16_7', stage: 'round16', homeTeamId: 'ARG', awayTeamId: 'EGY', homeTeamSource: 'Wr32_15', awayTeamSource: 'Wr32_14', matchDate: d('2026-07-07T12:00:00-04:00') }, // Argentina vs Egypt (Atlanta)
+  { id: 'r16_8', stage: 'round16', homeTeamId: 'SUI', awayTeamId: 'COL', homeTeamSource: 'Wr32_13', awayTeamSource: 'Wr32_16', matchDate: d('2026-07-07T16:00:00-04:00') }, // Switzerland vs Colombia (Vancouver)
 
-  // QUARTERFINALS (4 matches)
-  { id: 'qf_1', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_1', awayTeamSource: 'Wr16_2', matchDate: d('2026-07-20T12:00:00-04:00') },
-  { id: 'qf_2', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_3', awayTeamSource: 'Wr16_4', matchDate: d('2026-07-20T16:00:00-04:00') },
-  { id: 'qf_3', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_5', awayTeamSource: 'Wr16_6', matchDate: d('2026-07-21T12:00:00-04:00') },
-  { id: 'qf_4', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_7', awayTeamSource: 'Wr16_8', matchDate: d('2026-07-21T16:00:00-04:00') },
+  // QUARTERFINALS (4 matches) — Jul 9-11
+  { id: 'qf_1', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_1', awayTeamSource: 'Wr16_2', matchDate: d('2026-07-09T16:00:00-04:00') }, // MAR/FRA (Boston)
+  { id: 'qf_2', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_3', awayTeamSource: 'Wr16_4', matchDate: d('2026-07-11T17:00:00-04:00') }, // BRA/NOR vs MEX/ENG (Miami)
+  { id: 'qf_3', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_5', awayTeamSource: 'Wr16_6', matchDate: d('2026-07-10T15:00:00-04:00') }, // POR/ESP vs USA/BEL (Inglewood/LA)
+  { id: 'qf_4', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_7', awayTeamSource: 'Wr16_8', matchDate: d('2026-07-11T20:00:00-04:00') }, // ARG/EGY vs SUI/COL (Kansas City)
 
-  // SEMIFINALS (2 matches)
-  { id: 'sf_1', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_1', awayTeamSource: 'Wqf_2', matchDate: d('2026-07-24T19:00:00-04:00') },
-  { id: 'sf_2', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_3', awayTeamSource: 'Wqf_4', matchDate: d('2026-07-25T19:00:00-04:00') },
+  // SEMIFINALS (2 matches) — Jul 14-15
+  { id: 'sf_1', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_1', awayTeamSource: 'Wqf_2', matchDate: d('2026-07-14T20:00:00-04:00') }, // Arlington/Dallas
+  { id: 'sf_2', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_3', awayTeamSource: 'Wqf_4', matchDate: d('2026-07-15T20:00:00-04:00') }, // Atlanta
 
-  // THIRD PLACE
-  { id: 'tp_1', stage: 'third_place', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Lsf_1', awayTeamSource: 'Lsf_2', matchDate: d('2026-07-28T10:00:00-04:00') },
+  // THIRD PLACE — Jul 18
+  { id: 'tp_1', stage: 'third_place', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Lsf_1', awayTeamSource: 'Lsf_2', matchDate: d('2026-07-18T17:00:00-04:00') }, // Miami
 
-  // FINAL
-  { id: 'final_1', stage: 'final', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wsf_1', awayTeamSource: 'Wsf_2', matchDate: d('2026-07-29T11:00:00-04:00') },
+  // FINAL — Jul 19
+  { id: 'final_1', stage: 'final', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wsf_1', awayTeamSource: 'Wsf_2', matchDate: d('2026-07-19T15:00:00-04:00') }, // MetLife/East Rutherford
 ]
