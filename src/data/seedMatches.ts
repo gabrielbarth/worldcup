@@ -191,15 +191,15 @@ export const SEED_MATCHES: SeedMatch[] = [
   { id: 'r16_7', stage: 'round16', homeTeamId: 'ARG', awayTeamId: 'EGY', homeTeamSource: 'Wr32_15', awayTeamSource: 'Wr32_14', matchDate: d('2026-07-07T12:00:00-04:00') }, // Argentina vs Egypt (Atlanta)
   { id: 'r16_8', stage: 'round16', homeTeamId: 'SUI', awayTeamId: 'COL', homeTeamSource: 'Wr32_13', awayTeamSource: 'Wr32_16', matchDate: d('2026-07-07T16:00:00-04:00') }, // Switzerland vs Colombia (Vancouver)
 
-  // QUARTERFINALS (4 matches) — Jul 9-11
-  { id: 'qf_1', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_1', awayTeamSource: 'Wr16_2', matchDate: d('2026-07-09T16:00:00-04:00') }, // MAR/FRA (Boston)
-  { id: 'qf_2', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_3', awayTeamSource: 'Wr16_4', matchDate: d('2026-07-11T17:00:00-04:00') }, // BRA/NOR vs MEX/ENG (Miami)
-  { id: 'qf_3', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_5', awayTeamSource: 'Wr16_6', matchDate: d('2026-07-10T15:00:00-04:00') }, // POR/ESP vs USA/BEL (Inglewood/LA)
-  { id: 'qf_4', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_7', awayTeamSource: 'Wr16_8', matchDate: d('2026-07-11T20:00:00-04:00') }, // ARG/EGY vs SUI/COL (Kansas City)
+  // QUARTERFINALS (4 matches) — Jul 9-11, results confirmed
+  { id: 'qf_1', stage: 'quarter', homeTeamId: 'MAR', awayTeamId: 'FRA', homeTeamSource: 'Wr16_1', awayTeamSource: 'Wr16_2', matchDate: d('2026-07-09T16:00:00-04:00') }, // France 2-0 Morocco (Boston)
+  { id: 'qf_2', stage: 'quarter', homeTeamId: 'NOR', awayTeamId: 'ENG', homeTeamSource: 'Wr16_3', awayTeamSource: 'Wr16_4', matchDate: d('2026-07-11T17:00:00-04:00') }, // England 2-1 Norway (Miami)
+  { id: 'qf_3', stage: 'quarter', homeTeamId: 'ESP', awayTeamId: 'BEL', homeTeamSource: 'Wr16_5', awayTeamSource: 'Wr16_6', matchDate: d('2026-07-10T15:00:00-04:00') }, // Spain 2-1 Belgium (Inglewood/LA)
+  { id: 'qf_4', stage: 'quarter', homeTeamId: 'ARG', awayTeamId: 'SUI', homeTeamSource: 'Wr16_7', awayTeamSource: 'Wr16_8', matchDate: d('2026-07-11T20:00:00-04:00') }, // Argentina 3-1 Switzerland AET (Kansas City)
 
-  // SEMIFINALS (2 matches) — Jul 14-15
-  { id: 'sf_1', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_1', awayTeamSource: 'Wqf_2', matchDate: d('2026-07-14T20:00:00-04:00') }, // Arlington/Dallas
-  { id: 'sf_2', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_3', awayTeamSource: 'Wqf_4', matchDate: d('2026-07-15T20:00:00-04:00') }, // Atlanta
+  // SEMIFINALS (2 matches) — Jul 14-15, real bracket: FRA/ESP and ENG/ARG (not sequential Wqf_1-4 order)
+  { id: 'sf_1', stage: 'semi', homeTeamId: 'FRA', awayTeamId: 'ESP', homeTeamSource: 'Wqf_1', awayTeamSource: 'Wqf_3', matchDate: d('2026-07-14T15:00:00-04:00') }, // France vs Spain (Arlington/Dallas)
+  { id: 'sf_2', stage: 'semi', homeTeamId: 'ENG', awayTeamId: 'ARG', homeTeamSource: 'Wqf_2', awayTeamSource: 'Wqf_4', matchDate: d('2026-07-15T15:00:00-04:00') }, // England vs Argentina (Atlanta)
 
   // THIRD PLACE — Jul 18
   { id: 'tp_1', stage: 'third_place', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Lsf_1', awayTeamSource: 'Lsf_2', matchDate: d('2026-07-18T17:00:00-04:00') }, // Miami
