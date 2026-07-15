@@ -198,12 +198,13 @@ export const SEED_MATCHES: SeedMatch[] = [
   { id: 'qf_4', stage: 'quarter', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wr16_7', awayTeamSource: 'Wr16_8', matchDate: d('2026-07-11T20:00:00-04:00') }, // ARG/EGY vs SUI/COL (Kansas City)
 
   // SEMIFINALS (2 matches) — Jul 14-15
-  { id: 'sf_1', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_1', awayTeamSource: 'Wqf_2', matchDate: d('2026-07-14T20:00:00-04:00') }, // Arlington/Dallas
-  { id: 'sf_2', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_3', awayTeamSource: 'Wqf_4', matchDate: d('2026-07-15T20:00:00-04:00') }, // Atlanta
+  // Real bracket crosses QF halves: sf_1=Wqf_1 vs Wqf_3, sf_2=Wqf_2 vs Wqf_4
+  { id: 'sf_1', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_1', awayTeamSource: 'Wqf_3', matchDate: d('2026-07-14T20:00:00-04:00') }, // Arlington/Dallas: FRA vs ESP
+  { id: 'sf_2', stage: 'semi', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wqf_2', awayTeamSource: 'Wqf_4', matchDate: d('2026-07-15T20:00:00-04:00') }, // Atlanta: ENG vs ARG
 
   // THIRD PLACE — Jul 18
-  { id: 'tp_1', stage: 'third_place', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Lsf_1', awayTeamSource: 'Lsf_2', matchDate: d('2026-07-18T17:00:00-04:00') }, // Miami
+  { id: 'tp_1', stage: 'third_place', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Lsf_1', awayTeamSource: 'Lsf_2', matchDate: d('2026-07-18T17:00:00-04:00') }, // Miami: FRA vs ENG
 
   // FINAL — Jul 19
-  { id: 'final_1', stage: 'final', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wsf_1', awayTeamSource: 'Wsf_2', matchDate: d('2026-07-19T15:00:00-04:00') }, // MetLife/East Rutherford
+  { id: 'final_1', stage: 'final', homeTeamId: null, awayTeamId: null, homeTeamSource: 'Wsf_2', awayTeamSource: 'Wsf_1', matchDate: d('2026-07-19T15:00:00-04:00') }, // MetLife: ARG vs ESP
 ]
